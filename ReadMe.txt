@@ -1,6 +1,13 @@
 https://github.com/okovtun/ST_PV_34v_CS
 
 TODO:
+1. ¬ проект Arrays добавить методы: Print, Sum, Avg, 
+	MinValueIn,MaxValueIn,Sort,Shift,
+   дл€ одномерного, двумерного и зубчатого массива.
+2. «убчатый массив вывести на экран при помощи foreach.
+
+
+DONE tolko dva studenta :-(
 1. »сползу€ BigInteger вычислить факториал числа, введенного с клавиатуры;
 2. »спользу€ BigInteger вывести на экран р€д ‘ибоначчи;
 
