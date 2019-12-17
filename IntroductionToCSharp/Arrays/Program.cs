@@ -8,17 +8,7 @@ namespace Arrays
 {
 	class Program
 	{
-		static void FillRand(int[][] arr)
-		{
-			Random rand = new Random();
-			for (int i = 0; i < arr.Length; i++)
-			{
-				for (int j = 0; j < arr[i].Length; j++)
-				{
-					arr[i][j] = rand.Next(10, 20);
-				}
-			}
-		}
+
 		static void Main(string[] args)
 		{
 			#region SimpleArrays
@@ -90,10 +80,9 @@ namespace Arrays
 			//	new type[sizeN]
 			//};
 
-			Console.Write("Введите количество строк: ");
-			int rows = Convert.ToInt32(Console.ReadLine());
-			Console.Write("Введите количество элементов строки: ");
-			int cols = Convert.ToInt32(Console.ReadLine());
+			//Console.Write("Введите количество строк: ");			int rows = Convert.ToInt32(Console.ReadLine());
+			//Console.Write("Введите количество элементов строки: ");	int cols = Convert.ToInt32(Console.ReadLine());
+
 			int[][] arr = new int[][]
 			{
 				new int[]{ 3, 5, 8, 13, 21 },
@@ -108,16 +97,88 @@ namespace Arrays
 			//Program for_rand = new Program();
 			//for_rand.FillRand(arr);
 
-			FillRand(arr);
+			MyArray<int>.FillRand(arr);
+			MyArray<int>.Print(arr);
+			MyArray<int>.Sort(arr);
+			MyArray<int>.Print(arr);
+
+			double[][] drr = new double[][]
+			{
+				new double[]{ 2.5, 3.14, 1.8},
+				new double[]{ 6.6, 8.3, 1230, 44.4},
+				new double[]{ 10.11, 2.2}
+			};
+
+			MyArray<double>.Print(drr);
+			MyArray<double>.Sort(drr);
+			MyArray<double>.Print(drr);
+
+		}
+	}
+
+	class MyArray<T>
+	{
+		public static void FillRand(T[][] arr)
+		{
+			Random rand = new Random();
+			for (int i = 0; i < arr.Length; i++)
+			{
+				for (int j = 0; j < arr[i].Length; j++)
+				{
+					arr[i][j] = rand.Next(10, 20);
+				}
+			}
+		}
+
+		public static void Print(T[][] arr)
+		{
+			//for (int i = 0; i < arr.Length; i++)
+			//{
+			//	for (int j = 0; j < arr[i].Length; j++)
+			//	{
+			//		Console.Write(arr[i][j] + "\t");
+			//	}
+			//	Console.WriteLine();
+			//}
+
+			foreach (T[] i in arr)
+			{
+				foreach (T j in i)
+				{
+					Console.Write(j + "\t");
+				}
+				Console.WriteLine();
+			}
+			//Console.Write(i + "\t");
+			Console.WriteLine();
+		}
+
+		public static void Sort(T[][] arr)
+		{
 
 			for (int i = 0; i < arr.Length; i++)
 			{
 				for (int j = 0; j < arr[i].Length; j++)
 				{
-					Console.Write(arr[i][j] + "\t");
+					for (int k = i; k < arr.Length; k++)
+					{
+						for (int l = k == i ? j + 1 : 0; l < arr[k].Length; l++)
+						{
+							if (arr[k][l] < arr[i][j])
+							{
+								Exchange(ref arr[i][j], ref arr[k][l]);
+							}
+						}
+					}
 				}
-				Console.WriteLine();
 			}
+		}
+
+		static void Exchange(ref T a, ref T b)
+		{
+			T buffer = a;
+			a = b;
+			b = buffer;
 		}
 	}
 }
