@@ -116,9 +116,9 @@ namespace Arrays
 		}
 	}
 
-	class MyArray<T>
+	class MyArray<T> where T:IComparable
 	{
-		public static void FillRand(T[][] arr)
+		public static void FillRand(int [][] arr)
 		{
 			Random rand = new Random();
 			for (int i = 0; i < arr.Length; i++)
@@ -152,6 +152,21 @@ namespace Arrays
 			//Console.Write(i + "\t");
 			Console.WriteLine();
 		}
+		public static void Sort(T[] arr)
+        {
+            for(int i = 0; i<arr.Length;i++)
+            {
+                for(int j = i + 1; j < arr.Length; j++)
+                {
+                    if(arr[i].CompareTo(arr[j]) > 0)
+                    {
+						Exchange(ref arr[i], ref arr[j]);
+                    }
+                }
+            }
+        }
+
+
 
 		public static void Sort(T[][] arr)
 		{
@@ -164,7 +179,8 @@ namespace Arrays
 					{
 						for (int l = k == i ? j + 1 : 0; l < arr[k].Length; l++)
 						{
-							if (arr[k][l] < arr[i][j])
+							//if (arr[k][l] < arr[i][j])
+							if ((arr[k][l]).CompareTo(arr[i][j]) < 0)
 							{
 								Exchange(ref arr[i][j], ref arr[k][l]);
 							}
