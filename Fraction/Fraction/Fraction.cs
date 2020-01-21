@@ -78,13 +78,14 @@ namespace Fraction
 			Console.WriteLine("Constructor\t" + this.GetHashCode());
 		}
 		public Fraction(Fraction other)
-	{
-		integer = other.integer;
-		numerator = other.numerator;
-		denominator = other.denominator;
-		Console.WriteLine("CopyConstructor:" + this.GetHashCode());
-	}
-	~Fraction()
+		{
+			integer = other.integer;
+			numerator = other.numerator;
+			denominator = other.denominator;
+			Console.WriteLine("CopyConstructor:" + this.GetHashCode());
+		}
+
+		~Fraction()
 		{
 			Console.WriteLine("Destructor\t" + this.GetHashCode());
 		}
@@ -99,7 +100,7 @@ namespace Fraction
 			Numerator += Integer * Denominator;
 			Integer = 0;
 		}
-		/*
+
 		public Fraction Reduce()
 		{
 			int more;
@@ -120,18 +121,18 @@ namespace Fraction
 				reminder = more % less;
 				more = less;
 				less = reminder;
-			} while (reminder);
+			} while (reminder > 0);
 			int GCD = more; //Greatest Common Divisor
 			numerator /= GCD;
 			denominator /= GCD;
 			return this;
 		}
-		*/
+
 		//							Operators:
 		public static Fraction operator *(Fraction left, Fraction right)
 		{
 			left.ToImproper();
-			right.ToProper();
+			right.ToImproper();
 			return new Fraction(left.Numerator * right.Numerator, left.Denominator * right.Denominator).ToProper();
 		}
 		public static Fraction operator /(Fraction left, Fraction right)
@@ -151,12 +152,47 @@ namespace Fraction
 				left.Denominator * right.Denominator
 			).ToProper();//.Reduce();
 		}
-		/*static bool operator ==(Fraction left, Fraction right)
+		public static Fraction operator -(Fraction left, Fraction right)
+		{
+			left.ToProper();
+			right.ToProper();
+			return new Fraction
+			(
+				left.Integer - right.Integer,
+				left.Numerator * right.Denominator - right.Numerator * left.Denominator,
+				left.Denominator * right.Denominator
+			).ToProper().Reduce();
+		}
+
+		public static explicit operator bool(Fraction obj)
+		{
+			//Вариант 1
+			//if (obj.integer == 0 && obj.numerator == 0)
+			//{
+			//	return false;
+			//}
+			//else
+			//{
+			//	return true;
+			//}
+			//Вариант 2
+			return obj.integer == 0 && obj.numerator == 0;
+		}
+		public static explicit operator int(Fraction obj)
+		{
+			return obj.integer;
+		}
+
+		public static bool operator ==(Fraction left, Fraction right)
 		{
 			left.Reduce().ToImproper();
 			right.Reduce().ToImproper();
 			return left.Numerator == right.Numerator && left.Denominator == right.Denominator;
 		}
-		*/
+
+		public static bool operator !=(Fraction left, Fraction right)
+		{
+			return !(left == right);
+		}
 	}
 }

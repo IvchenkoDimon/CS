@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Fraction
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
+	class Program
+	{
+		static void Main(string[] args)
+		{
 #if CONSTRUCTORS_CHECK
 			Fraction A = new Fraction(1, 2, 3);
 			Console.WriteLine(A);
@@ -22,19 +22,37 @@ namespace Fraction
 
 			Fraction A = new Fraction(3, 4, 5);
 			Fraction B = new Fraction(4, 5, 6);
-			/*
-			Console.WriteLine(A);
-			Console.WriteLine(B);
-			Console.WriteLine(A*B);
-			*/
-			Console.WriteLine(A);
-			Console.WriteLine(B);
-			Console.WriteLine(A+B);
+
+			Fraction reduction = new Fraction(5, 10);
+			reduction.Reduce();
+			Console.WriteLine(reduction);
+
+			Console.ReadKey();
+
 			Console.WriteLine(A);
 			Console.WriteLine(B);
 
+			Console.WriteLine("-------------Operator * -------------------");
+			Console.WriteLine(A*B);
+			Console.WriteLine(A);
+			Console.WriteLine(B);
+
+			Console.WriteLine("-------------Operator / -------------------");
+			Console.WriteLine(A / B);
+			Console.WriteLine(A);
+			Console.WriteLine(B);
+
+			Console.WriteLine("-------------Operator + -------------------");
+			Console.WriteLine(A + B);
+			Console.WriteLine(A);
+			Console.WriteLine(B);
+
+			Console.WriteLine("-------------Operator - -------------------");
+			Console.WriteLine(B);
+			Console.WriteLine(A);
+			Console.WriteLine(B - A);
 		}
-		
-    }
-	
+
+	}
+
 }
