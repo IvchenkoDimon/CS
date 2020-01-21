@@ -22,11 +22,17 @@ namespace Fraction
 
 			Fraction A = new Fraction(3, 4, 5);
 			Fraction B = new Fraction(4, 5, 6);
+			/*
 			Console.WriteLine(A);
 			Console.WriteLine(B);
 			Console.WriteLine(A*B);
+			*/
 			Console.WriteLine(A);
 			Console.WriteLine(B);
+			Console.WriteLine(A+B);
+			Console.WriteLine(A);
+			Console.WriteLine(B);
+
 		}
 		
     }

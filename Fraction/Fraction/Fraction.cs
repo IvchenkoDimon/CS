@@ -54,7 +54,7 @@ namespace Fraction
 			Integer = 0;
 			Numerator = 0;
 			Denominator = 1;
-			Console.WriteLine("DConstructor\t" + this.GetHashCode());
+			Console.WriteLine("DefConstructor\t" + this.GetHashCode());
 		}
 		public Fraction(int integer)
 		{
@@ -77,7 +77,14 @@ namespace Fraction
 			Denominator = denominator;
 			Console.WriteLine("Constructor\t" + this.GetHashCode());
 		}
-		~Fraction()
+		public Fraction(Fraction other)
+	{
+		integer = other.integer;
+		numerator = other.numerator;
+		denominator = other.denominator;
+		Console.WriteLine("CopyConstructor:" + this.GetHashCode());
+	}
+	~Fraction()
 		{
 			Console.WriteLine("Destructor\t" + this.GetHashCode());
 		}
@@ -92,11 +99,64 @@ namespace Fraction
 			Numerator += Integer * Denominator;
 			Integer = 0;
 		}
+		/*
+		public Fraction Reduce()
+		{
+			int more;
+			int less;
+			int reminder;
+			if (numerator > denominator)
+			{
+				more = numerator;
+				less = denominator;
+			}
+			else
+			{
+				less = numerator;
+				more = denominator;
+			}
+			do
+			{
+				reminder = more % less;
+				more = less;
+				less = reminder;
+			} while (reminder);
+			int GCD = more; //Greatest Common Divisor
+			numerator /= GCD;
+			denominator /= GCD;
+			return this;
+		}
+		*/
+		//							Operators:
 		public static Fraction operator *(Fraction left, Fraction right)
 		{
 			left.ToImproper();
 			right.ToProper();
 			return new Fraction(left.Numerator * right.Numerator, left.Denominator * right.Denominator).ToProper();
 		}
+		public static Fraction operator /(Fraction left, Fraction right)
+		{
+			left.ToImproper();
+			right.ToImproper();
+			return new Fraction(left.Numerator * right.Denominator, left.Denominator * right.Numerator).ToProper();//.Reduce();
+		}
+		public static Fraction operator +(Fraction left, Fraction right)
+		{
+			left.ToProper();
+			right.ToProper();
+			return new Fraction
+			(
+				left.Integer + right.Integer,
+				left.Numerator * right.Denominator + right.Numerator * left.Denominator,
+				left.Denominator * right.Denominator
+			).ToProper();//.Reduce();
+		}
+		/*static bool operator ==(Fraction left, Fraction right)
+		{
+			left.Reduce().ToImproper();
+			right.Reduce().ToImproper();
+			return left.Numerator == right.Numerator && left.Denominator == right.Denominator;
+		}
+		*/
 	}
 }
