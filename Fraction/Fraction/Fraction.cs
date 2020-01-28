@@ -139,7 +139,7 @@ namespace Fraction
 		{
 			left.ToImproper();
 			right.ToImproper();
-			return new Fraction(left.Numerator * right.Denominator, left.Denominator * right.Numerator).ToProper();//.Reduce();
+			return new Fraction(left.Numerator * right.Denominator, left.Denominator * right.Numerator).ToProper().Reduce();
 		}
 		public static Fraction operator +(Fraction left, Fraction right)
 		{
@@ -150,7 +150,7 @@ namespace Fraction
 				left.Integer + right.Integer,
 				left.Numerator * right.Denominator + right.Numerator * left.Denominator,
 				left.Denominator * right.Denominator
-			).ToProper();//.Reduce();
+			).ToProper().Reduce();
 		}
 		public static Fraction operator -(Fraction left, Fraction right)
 		{
