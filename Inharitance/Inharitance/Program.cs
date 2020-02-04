@@ -25,8 +25,8 @@ namespace Inharitance
 
 			Human[] group = new Human[] 
 			{
-				new Student("McCallister", "Kevin", 20, 100500 , "ITV_34v", "Home Alone"),
-				new Teacher("Murchins", "Marv", 50, "Thief", 40),
+				new Student("!McCallister", "!Kevin", 20, 100500 , "ITV_34v", "Home Alone"),
+				new Teacher("Murchins", "Marv", 150, "Thief", 40),
 				new Graduate("Lyme", "Hary", 25, 500, "Home Alone 2", "ITV_54v", "Thief technique"),
 				new Teacher("Einstein", "Albert", 100, "Astrinimy", 70),
 				new Student("Montana", "Antonio", 30, 70, "ITV_34v", "Scareface"),

@@ -9,19 +9,20 @@ namespace Inharitance
 	class Human
 	{
 
-		private string first;
-		private string last;
-		private uint age;
+		string first;
+		string last;
+		uint age;
 
 		public string First
 		{
 			get => first;
-			set => first = value;
+            set => first = value == "!" ? value : throw new Exception("Челик, ты обшибся?");
+           
 		}
 		public string Last
 		{
 			get => last;
-			set => last = value;
+			set => last = value == "!" ? value : throw new Exception("Алё, че ты пишешь?");
 		}
 		public uint Age
 		{
