@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace Inharitance
 {
@@ -20,7 +21,12 @@ namespace Inharitance
 		public string Groupe
 		{
 			get => groupe;
-			set => groupe = value;
+			set
+			{
+				if (Regex.IsMatch(value, "[^A-Z]{2}_[A-Z]{2,3}_[0-9]", RegexOptions.IgnoreCase))///////////!!!!!!!!!!!!!!
+				throw new Exception("Чувак, ГРУППА должно состоять только из букв и цифр!");
+				groupe = value;
+			}
 		}
 		public string Course
 		{
@@ -29,9 +35,9 @@ namespace Inharitance
 		}
 		public Student(string last, string first, uint age, int rating, string course, string groupe):base(last, first, age)
 		{
-			this.rating = rating;
-			this.groupe = groupe;
-			this.course = course;
+			this.Rating = rating;
+			this.Groupe = groupe;
+			this.Course = course;
 			Console.WriteLine("SConstructor\t:" + this.GetHashCode());
 		}
 		~Student()

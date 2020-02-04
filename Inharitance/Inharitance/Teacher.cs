@@ -24,8 +24,8 @@ namespace Inharitance
 
 		public Teacher(string last, string first, uint age, string subject, int exp) : base(last, first, age)
 		{
-			this.exp = exp;
-			this.subject = subject;
+			this.Exp = exp;
+			this.Subject = subject;
 			Console.WriteLine("TConstructor\t:" + this.GetHashCode());
 		}
 		~Teacher()

@@ -17,7 +17,7 @@ namespace Inharitance
 		}
 		public Graduate(string last, string first, uint age, int rating, string course, string groupe, string diploma_theme):base(last, first, age, rating,course, groupe)
 		{
-			this.diploma_theme = diploma_theme;
+			this.DiplomaTheme = diploma_theme;
 			Console.WriteLine("GConstructor\t:" + this.GetHashCode());
 		}
 		~Graduate()
