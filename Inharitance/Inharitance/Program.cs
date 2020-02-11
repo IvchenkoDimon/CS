@@ -23,7 +23,7 @@ namespace Inharitance
 				Teacher C = new Teacher("Murchins", "Marv", 50, "Thief", 40);
 				C.Info();
 				Console.WriteLine("-----------class Graduate-----------");
-				Graduate D = new Graduate("Lyme", "Hary", 25, 500, "Home Alone 2", "ST_ITV_54v", "Thief technique");
+				Graduate D = new Graduate("Lyme", "Hary", 25, 500, "Home Alone 2", "ST_ITV_54v", "Thief technique", "kroshka@gmail.com");
 				D.Info();
 
 				//Teacher t = new Teacher("Murchins", "Marv", 150, "Thief", 40);
