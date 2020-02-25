@@ -7,9 +7,9 @@ namespace Car
 {
 	class Tank
 	{
-		uint volume;//Атрибут (характеристика объекта) 
-		double fuel;//Состояние объекта
-
+		uint volume;				//Атрибут (характеристика объекта) 
+		double fuel;				//Состояние объекта
+		
 		public uint Volume
 		{
 			get => volume;
@@ -20,13 +20,13 @@ namespace Car
 			get => fuel;
 			set
 			{
-				fuel += value;
+				fuel = value;
 				if (fuel < 0) fuel = 0;
 				if (fuel > volume) fuel = volume;
 			}
 		}
 
-		void Fill(double fuel)
+		public void Fill(double fuel)
 		{
 			Fuel += fuel;
 		}
