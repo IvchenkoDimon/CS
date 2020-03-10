@@ -9,6 +9,7 @@ namespace Car
 	{
 		uint power;					//мощность
 		double consumption;         //расход топлива
+        //double consumptionPerSecond; // не нужно обьявлять, так как используем автосвойство
 		//bool started;
 		public uint Power
 		{
@@ -31,17 +32,19 @@ namespace Car
 			get => consumption;
 			private set => consumption = value;
 		}
+        public double ConsumptionPerSecond { get; set; }
 		public bool Started { get; set; }
 
 		public Engine(uint power)
 		{
 			Power = power;
-			consumption = .0002 * (Power / 15);
+			Consumption = .0002 * (Power / 15);
+            ConsumptionPerSecond = Consumption / 10;
 			Started = false;
 		}
 		public override string ToString()
 		{
-			return $"Power: {Power} HP, Consumption {Consumption*3600} L/100km, engine: {(Started?"started":"stopped")}";
+			return $"Power: {Power} HP, Consumption {Consumption*3600} L/100km, consumption per second: {ConsumptionPerSecond} L/sec, engine: {(Started?"started":"stopped")}";
 		}
 	}
 }

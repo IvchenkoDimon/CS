@@ -36,6 +36,12 @@ namespace Car
 			Volume = volume;
 			Fuel = fuel;
 		}
+        public double GiveFuel(double amount)
+        {
+            Fuel -= amount;
+            //if (Fuel < 0) Fuel = 0;
+            return Fuel;
+        }
 		public override string ToString()
 		{
 			return $"Tank volume: {Volume};\nFuel level: {Fuel}";
