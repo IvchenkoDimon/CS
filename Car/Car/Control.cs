@@ -12,5 +12,7 @@ namespace Car
     {
         public Thread tControlPanelThread { get; set; }
         public Thread tEngineIdleThread { get; set; }
+        public Thread tMainThread { get; set; }
+        public Thread tFreeWheelingThread { get; set; }
     }
 }
